@@ -48,8 +48,9 @@ def main():
         custom_tickers = custom_tickers.split(",")
         selected_tickers = list(set(selected_tickers+custom_tickers))
         available_frequencies = get_frequency_list()
-        frequency = st.selectbox("Select period", options=available_frequencies, default=available_frequencies[0])
-        fetch_data = st.button("Fetch Data")
+        frequency = st.selectbox("Select period", options=available_frequencies,index=0)
+    
+    fetch_data = st.button("Fetch Data")
     
     if "all_data" not in st.session_state:
         st.session_state.all_data = {}
