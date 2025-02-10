@@ -42,12 +42,13 @@ def main():
     with st.sidebar:
         tickr_type = st.selectbox("Select ticker type", ["stock"])
         available_tickers = get_initial_tickr_list(tickr_type)
-        selected_tickers = st.multiselect("Select tickers", available_tickers)
+        selected_tickers = st.multiselect("Select tickers", options=available_tickers, default=available_tickers[:2])
         # Allow user to enter a custom ticker
         custom_tickers = st.text_input("Enter additional tickers as CSV:", "")
         custom_tickers = custom_tickers.split(",")
         selected_tickers = list(set(selected_tickers+custom_tickers))
-        frequency = st.selectbox("Select period", get_frequency_list())
+        available_frequencies = get_frequency_list()
+        frequency = st.selectbox("Select period", options=available_frequencies, default=available_frequencies[0])
         fetch_data = st.button("Fetch Data")
     
     if "all_data" not in st.session_state:
