@@ -40,7 +40,7 @@ def main():
     st.title("Finance Dashboard App")
     
     with st.sidebar:
-        tickr_type = st.selectbox("Select ticker type", ["fund", "stock"])
+        tickr_type = st.selectbox("Select ticker type", ["stock"])
         available_tickers = get_initial_tickr_list(tickr_type)
         selected_tickers = st.multiselect("Select tickers", available_tickers)
         # Allow user to enter a custom ticker
